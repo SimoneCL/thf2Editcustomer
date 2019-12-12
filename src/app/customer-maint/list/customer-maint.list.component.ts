@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThfI18nPipe, ThfI18nService, ThfNotificationService, ThfTableColumn, ThfTableAction, ThfDisclaimer, ThfDisclaimerGroup, ThfPageFilter, ThfModalAction, ThfModalComponent, ThfBreadcrumb, ThfPageAction, ThfLookupColumn } from '@totvs/thf-ui';
-import { ThfDialogService } from '@totvs/thf-ui';
+import { PoI18nPipe, PoI18nService, PoNotificationService, PoTableColumn, PoTableAction, PoDisclaimer, PoDisclaimerGroup, PoPageFilter, PoModalAction, PoModalComponent, PoBreadcrumb, PoPageAction, PoLookupColumn } from '@portinari/portinari-ui';
+import { PoDialogService } from '@portinari/portinari-ui';
 import { forkJoin, Subscription } from 'rxjs';
 import { TotvsResponse } from './../../shared/interfaces/totvs-response.interface';
 import { ICustomer, Customer } from './../../shared/model/customer.model';
@@ -20,27 +20,27 @@ import { CountryService } from '../../shared/services/country.service';
     styleUrls: ['./customer-maint.list.component.css']
 })
 export class CustomerMaintListComponent implements OnInit, OnDestroy {
-    @ViewChild('modalAdvanceSearch', { static: false }) modalAdvanceSearch: ThfModalComponent;
+    @ViewChild('modalAdvanceSearch', { static: false }) modalAdvanceSearch: PoModalComponent;
 
     literals: any = {};
-    disclaimers: Array<ThfDisclaimer> = [];
-    disclaimerGroup: ThfDisclaimerGroup;
+    disclaimers: Array<PoDisclaimer> = [];
+    disclaimerGroup: PoDisclaimerGroup;
     disclaimerUtil: DisclaimerUtil;
 
     fieldValidUtil: FieldValidationUtil;
     filterCode: IFilterRangeNumber;
-    filterSettings: ThfPageFilter;
+    filterSettings: PoPageFilter;
     quickSearchValue = '';
 
-    confirmAdvSearchAction: ThfModalAction;
-    cancelAdvSearchAction: ThfModalAction;
+    confirmAdvSearchAction: PoModalAction;
+    cancelAdvSearchAction: PoModalAction;
 
-    breadcrumb: ThfBreadcrumb;
+    breadcrumb: PoBreadcrumb;
 
     servCustomerSubscription$: Subscription;
 
-    columns: Array<ThfTableColumn>;
-    tableActions: Array<ThfTableAction>;
+    columns: Array<PoTableColumn>;
+    tableActions: Array<PoTableAction>;
     items: Array<ICustomer> = new Array<ICustomer>();
 
     hasNext = false;
@@ -49,15 +49,15 @@ export class CustomerMaintListComponent implements OnInit, OnDestroy {
 
     expandables = [''];
 
-    pageActions: Array<ThfPageAction>;
-    zoomCountryColumns: Array<ThfLookupColumn>;
+    pageActions: Array<PoPageAction>;
+    zoomCountryColumns: Array<PoLookupColumn>;
     statusLabelList: Array<any>;
 
     constructor(
-        private thfI18nPipe: ThfI18nPipe,
-        private thfI18nService: ThfI18nService,
-        private thfNotification: ThfNotificationService,
-        private thfDialogService: ThfDialogService,
+        private thfI18nPipe: PoI18nPipe,
+        private thfI18nService: PoI18nService,
+        private thfNotification: PoNotificationService,
+        private thfDialogService: PoDialogService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private servCustomer: CustomerService,
@@ -122,7 +122,7 @@ export class CustomerMaintListComponent implements OnInit, OnDestroy {
 
 
 
-    addDisclaimer(disclaimerListItem: Array<ThfDisclaimer>): void {
+    addDisclaimer(disclaimerListItem: Array<PoDisclaimer>): void {
         if (!disclaimerListItem) { return; }
 
         disclaimerListItem.map(disclaimerItem => {
@@ -133,7 +133,7 @@ export class CustomerMaintListComponent implements OnInit, OnDestroy {
 
 
 
-    onChangeDisclaimer(disclaimers: Array<ThfDisclaimer>): void {
+    onChangeDisclaimer(disclaimers: Array<PoDisclaimer>): void {
         this.disclaimers = disclaimers;
         this.refreshFilters();
         this.search();
@@ -256,12 +256,12 @@ export class CustomerMaintListComponent implements OnInit, OnDestroy {
             { property: 'name', label: this.literals['name'], type: 'string' }
         ];
         this.tableActions = [
-            { action: this.detail.bind(this), label: this.literals['detail'], icon: 'thf-icon thf-icon-document' },
-            { action: this.edit.bind(this), label: this.literals['edit'], icon: 'thf-icon thf-icon-edit' },
-            { action: this.delete.bind(this), label: this.literals['remove'], icon: 'thf-icon thf-icon-delete' }
+            { action: this.detail.bind(this), label: this.literals['detail'], icon: 'po-icon po-icon-document' },
+            { action: this.edit.bind(this), label: this.literals['edit'], icon: 'po-icon po-icon-edit' },
+            { action: this.delete.bind(this), label: this.literals['remove'], icon: 'po-icon po-icon-delete' }
         ];
         this.pageActions = [
-            { label: this.literals['add'], action: this.create.bind(this), icon: 'thf-icon-add' }
+            { label: this.literals['add'], action: this.create.bind(this), icon: 'po-icon-add' }
         ];
 
         this.statusLabelList = Customer.statusLabelList(this.literals);
@@ -275,7 +275,7 @@ export class CustomerMaintListComponent implements OnInit, OnDestroy {
         ];
         /*
                 this.pageActions = [
-                    { label: this.literals['add'], action: this.create.bind(this), icon: 'thf-icon-plus' }
+                    { label: this.literals['add'], action: this.create.bind(this), icon: 'po-icon-plus' }
                 ];
         */
         this.resetFilters();

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThfI18nPipe, ThfI18nService, ThfNotificationService, ThfTableColumn, ThfTableAction, ThfDisclaimer, ThfDisclaimerGroup, ThfPageFilter, ThfModalAction, ThfModalComponent, ThfBreadcrumb, ThfRadioGroupOption } from '@totvs/thf-ui';
-import { ThfDialogService } from '@totvs/thf-ui';
+import { PoI18nPipe, PoI18nService, PoNotificationService, PoTableColumn, PoTableAction, PoDisclaimer, PoDisclaimerGroup, PoPageFilter, PoModalAction, PoModalComponent, PoBreadcrumb, PoRadioGroupOption } from '@portinari/portinari-ui';
+import { PoDialogService } from '@portinari/portinari-ui';
 import { forkJoin, Subscription } from 'rxjs';
 import { TotvsResponse } from './../../shared/interfaces/totvs-response.interface';
 import { ICustomer, Customer } from './../../shared/model/customer.model';
@@ -20,13 +20,13 @@ import { IContact, Contact } from './../../shared/model/contact.model';
     styleUrls: ['./customer-maint.edit.component.css']
 })
 export class CustomerMaintEditComponent implements OnInit, OnDestroy {
-    @ViewChild('modalEdition', { static: false }) modalEdition: ThfModalComponent;
+    @ViewChild('modalEdition', { static: false }) modalEdition: PoModalComponent;
    
     literals: any = {};
     isEdit = false;
 
-    breadcrumb: ThfBreadcrumb;
-    statusOptions: Array<ThfRadioGroupOption>;
+    breadcrumb: PoBreadcrumb;
+    statusOptions: Array<PoRadioGroupOption>;
 
     fieldValidUtil: FieldValidationUtil;
     servCustomerSubscription$: Subscription;
@@ -40,15 +40,15 @@ export class CustomerMaintEditComponent implements OnInit, OnDestroy {
 
     expandables: any;
 
-    columns: Array<ThfTableColumn>;
-    tableActions: Array<ThfTableAction>;
+    columns: Array<PoTableColumn>;
+    tableActions: Array<PoTableAction>;
 
 
     constructor(
-        private thfI18nPipe: ThfI18nPipe,
-        private thfI18nService: ThfI18nService,
-        private thfNotification: ThfNotificationService,
-        private thfDialogService: ThfDialogService,
+        private thfI18nPipe: PoI18nPipe,
+        private thfI18nService: PoI18nService,
+        private thfNotification: PoNotificationService,
+        private thfDialogService: PoDialogService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private breadcrumbControlService: BreadcrumbControlService,
@@ -179,9 +179,9 @@ export class CustomerMaintEditComponent implements OnInit, OnDestroy {
             { property: 'fone', label: this.literals['fone'], type: 'string' }
         ];
         this.tableActions = [
-           // { action: this.detail.bind(this), label: this.literals['detail'], icon: 'thf-icon thf-icon-document' }
-            { action: this.edit.bind(this), label: this.literals['edit'], icon: 'thf-icon thf-icon-edit' }
-           // { action: this.delete.bind(this), label: this.literals['remove'], icon: 'thf-icon thf-icon-delete' }*/
+           // { action: this.detail.bind(this), label: this.literals['detail'], icon: 'po-icon po-icon-document' }
+            { action: this.edit.bind(this), label: this.literals['edit'], icon: 'po-icon po-icon-edit' }
+           // { action: this.delete.bind(this), label: this.literals['remove'], icon: 'po-icon po-icon-delete' }*/
         ]
     }
 

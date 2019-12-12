@@ -1,4 +1,4 @@
-import { ThfMultiselectOption, ThfSelectOption } from '@totvs/thf-ui';
+import { PoMultiselectOption, PoSelectOption } from '@portinari/portinari-ui';
 import { ThfKendoLineChartSeries } from '@totvs/thf-kendo';
 
 /*
@@ -112,7 +112,7 @@ export class GenericFunctionsUtils {
     }
 
     /*Deixa no list apenas o itens que existem no options*/
-    static atzMultiSelectListByOptions(options: Array<ThfMultiselectOption>, list: Array<string>): Array<string> {
+    static atzMultiSelectListByOptions(options: Array<PoMultiselectOption>, list: Array<string>): Array<string> {
         let idx: number;
         let newList: Array<string>;
 
@@ -135,7 +135,7 @@ export class GenericFunctionsUtils {
     }
 
     /*Carrega o Options com os valores defaults passados como parâmetro (list)*/
-    public loadOptionsMultiSelect(options: Array<ThfMultiselectOption>, list: Array<string>): void {
+    public loadOptionsMultiSelect(options: Array<PoMultiselectOption>, list: Array<string>): void {
         let idx: number;
 
         if (!list) {
@@ -153,7 +153,7 @@ export class GenericFunctionsUtils {
     }
 
     /*Carrega o Options com os valores defaults passados como parâmetro (list)*/
-    public loadOptionsSelect(options: Array<ThfSelectOption>, selectValue: string, tradValue = false): void {
+    public loadOptionsSelect(options: Array<PoSelectOption>, selectValue: string, tradValue = false): void {
         let idx: number;
 
         if (!selectValue) {

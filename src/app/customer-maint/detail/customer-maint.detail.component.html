@@ -1,55 +1,55 @@
-<thf-page-detail name="customerMaintDetail"
-    [t-title]="literals?.customerMaintDetail"
-    [t-breadcrumb]="breadcrumb"
+<po-page-detail name="customerMaintDetail"
+    [p-title]="literals?.customerMaintDetail"
+    [p-breadcrumb]="breadcrumb"
     >
-    <div class="thf-row">
-        <thf-input class="thf-md-3" name="code"
+    <div class="po-row">
+        <po-input class="po-md-3" name="code"
             [(ngModel)]="customer.code"
-            [t-label]="literals?.code"
-            t-readonly>
-        </thf-input>
+            [p-label]="literals?.code"
+            p-readonly>
+        </po-input>
 
-        <thf-input class="thf-md-3" name="shortName"
+        <po-input class="po-md-3" name="shortName"
             [(ngModel)]="customer.shortName"
-            [t-label]="literals?.shortName"
-            t-readonly>
-        </thf-input>
+            [p-label]="literals?.shortName"
+            p-readonly>
+        </po-input>
 
-        <thf-input class="thf-md-9" name="name"
+        <po-input class="po-md-9" name="name"
             [(ngModel)]="customer.name"
-            [t-label]="literals?.name"
-            t-readonly>
-        </thf-input>
+            [p-label]="literals?.name"
+            p-readonly>
+        </po-input>
 
-        <thf-input class="thf-md-2" name="country"
+        <po-input class="po-md-2" name="country"
             [(ngModel)]="customer.country"
-            [t-label]="literals?.country"
-            [t-placeholder]="literals?.country"
-            t-maxlength=40
-            t-clean
-            t-readonly>
-        </thf-input>
-        <thf-radio-group class="thf-md-6" name="status"
+            [p-label]="literals?.country"
+            [p-placeholder]="literals?.country"
+            p-maxlength=40
+            p-clean
+            p-readonly>
+        </po-input>
+        <po-radio-group class="po-md-6" name="status"
             [(ngModel)]="customer.status"
-            [t-label]="literals?.status"
-            [t-options]="statusOptions"
-            t-disabled>
-        </thf-radio-group>
+            [p-label]="literals?.status"
+            [p-options]="statusOptions"
+            p-disabled>
+        </po-radio-group>
        
     </div>
-    <div class="thf-row">
-        <thf-table
-            t-checkbox="false"
-            t-striped="true"
-            [t-columns]="columns"
-            [t-items]="items"
-            [t-show-more-disabled]="!hasNext"     
+    <div class="po-row">
+        <po-table
+            p-checkbox="false"
+            p-striped="true"
+            [p-columns]="columns"
+            [p-items]="items"
+            [p-show-more-disabled]="!hasNext"     
         >
-        </thf-table>
+        </po-table>
         <!-- 
         
-            (t-show-more)="search(true)"    -->
+            (p-show-more)="search(true)"    -->
     </div>
-</thf-page-detail>
+</po-page-detail>
 
 

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { ThfModule } from '@totvs/thf-ui';
-import { ThfI18nConfig, ThfI18nModule, ThfI18nPipe } from '@totvs/thf-ui';
+import { PoModule } from '@portinari/portinari-ui';
+import { PoI18nConfig, PoI18nModule, PoI18nPipe } from '@portinari/portinari-ui';
 
 import { AppComponent } from './app.component';
 
@@ -22,7 +22,7 @@ import { CustomerService } from './shared/services/customer.service';
 import { CountryService } from './shared/services/country.service';
 import { ContactService } from './shared/services/contact.service';
 
-const i18nConfig: ThfI18nConfig = {
+const i18nConfig: PoI18nConfig = {
     default: {
         context: 'general',
         cache: true
@@ -54,14 +54,14 @@ const i18nConfig: ThfI18nConfig = {
     imports: [
 
         BrowserModule,
-        ThfModule,
+        PoModule,
         CommonModule,
         FormsModule,
         AppRoutingModule,
-        ThfI18nModule.config(i18nConfig)
+        PoI18nModule.config(i18nConfig)
     ],
     providers: [
-        ThfI18nPipe,
+        PoI18nPipe,
         BreadcrumbControlService,
         CustomerService,
         CountryService,

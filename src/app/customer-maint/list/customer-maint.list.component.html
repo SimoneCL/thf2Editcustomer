@@ -1,60 +1,60 @@
-<thf-page-list name="customerMaintList"
-    [t-title]="literals?.customerMaintList"
-    [t-disclaimer-group]="disclaimerGroup"
-    [t-filter]="filterSettings"
-    [t-breadcrumb]="breadcrumb"
-    [t-actions]="pageActions"
+<po-page-list name="customerMaintList"
+    [p-title]="literals?.customerMaintList"
+    [p-disclaimer-group]="disclaimerGroup"
+    [p-filter]="filterSettings"
+    [p-breadcrumb]="breadcrumb"
+    [p-actions]="pageActions"
     >
 
 <!--
    
-    [t-disclaimer-group]="disclaimerGroup"
+    [p-disclaimer-group]="disclaimerGroup"
     
     
 -->
 
 
-    <thf-table
-        t-checkbox="false"
-        t-striped="true"
-        [t-columns]="columns"
-        [t-items]="items"
-        [t-actions]="tableActions"
-        [t-show-more-disabled]="!hasNext"
-        (t-show-more)="search(true)">
-    </thf-table>
+    <po-table
+        p-checkbox="false"
+        p-striped="true"
+        [p-columns]="columns"
+        [p-items]="items"
+        [p-actions]="tableActions"
+        [p-show-more-disabled]="!hasNext"
+        (p-show-more)="search(true)">
+    </po-table>
 <!--
-     t-striped="true" fixo 
-      [t-items]="items" são os dados
+     p-striped="true" fixo 
+      [p-items]="items" são os dados
 -->
    
-</thf-page-list>
+</po-page-list>
 
 
-<thf-modal #modalAdvanceSearch
-    t-size="sm"
-    [t-title]="literals?.modalAdvanceSearch"
-    [t-primary-action]="confirmAdvSearchAction"
-    [t-secondary-action]="cancelAdvSearchAction">
+<po-modal #modalAdvanceSearch
+    p-size="sm"
+    [p-title]="literals?.modalAdvanceSearch"
+    [p-primary-action]="confirmAdvSearchAction"
+    [p-secondary-action]="cancelAdvSearchAction">
 
-    <div class="thf-row">
-        <thf-number class="thf-md-6" name="codeInitial"
+    <div class="po-row">
+        <po-number class="po-md-6" name="codeInitial"
             [(ngModel)]="filterCode.valInitial"
-            [t-label]="literals?.codeInitial"
-            [t-placeholder]="literals?.codeInitial"
-            t-minlength="1"
-            t-maxlength="9"
-            t-min="0">
-        </thf-number>
+            [p-label]="literals?.codeInitial"
+            [p-placeholder]="literals?.codeInitial"
+            p-minlength="1"
+            p-maxlength="9"
+            p-min="0">
+        </po-number>
 
-        <thf-number class="thf-md-6" name="codeFinal"
+        <po-number class="po-md-6" name="codeFinal"
             [(ngModel)]="filterCode.valFinal"
-            [t-label]="literals?.codeFinal"
-            [t-placeholder]="literals?.codeFinal"
-            t-minlength="1"
-            t-maxlength="9"
-            t-min="0"
-            t-required>
-        </thf-number>  
+            [p-label]="literals?.codeFinal"
+            [p-placeholder]="literals?.codeFinal"
+            p-minlength="1"
+            p-maxlength="9"
+            p-min="0"
+            p-required>
+        </po-number>  
     </div>
-</thf-modal>
+</po-modal>

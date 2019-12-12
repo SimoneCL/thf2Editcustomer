@@ -3,19 +3,19 @@ Versão: 1.000
 Data Criação: 19/02/2019
 */
 
-import { ThfNotificationService, ThfI18nPipe } from '@totvs/thf-ui';
+import { PoNotificationService, PoI18nPipe } from '@portinari/portinari-ui';
 import { DisclaimerUtil } from './disclaimer.util';
 
 export class FieldValidationUtil {
-    thfNotification: ThfNotificationService;
-    thfI18nPipe: ThfI18nPipe;
+    thfNotification: PoNotificationService;
+    thfI18nPipe: PoI18nPipe;
     literals: any = {};
 
     disclaimerUtil: DisclaimerUtil;
 
     constructor(
-        thfNotification: ThfNotificationService,
-        thfI18nPipe: ThfI18nPipe,
+        thfNotification: PoNotificationService,
+        thfI18nPipe: PoI18nPipe,
         literals: Object
     ) {
         this.thfNotification = thfNotification;

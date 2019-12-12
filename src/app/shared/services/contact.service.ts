@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ThfDisclaimer } from '@totvs/thf-ui';
+import { PoDisclaimer } from '@portinari/portinari-ui';
 import { Observable } from 'rxjs';
 import { TotvsResponse } from '../interfaces/totvs-response.interface';
 import { IContact, Contact } from '../model/contact.model';
@@ -9,7 +9,7 @@ import { IContact, Contact } from '../model/contact.model';
 @Injectable()
 export class ContactService {
 
-    private headers = { headers: { 'X-Totvs-Screen-Lock': 'true' } };
+    private headers = { headers: { 'X-Portinari-Screen-Lock': 'true' } };
 
     // private apiBaseUrl = '/dts/datasul-rest/resources/prg/fin/v1/contact';
     private apiBaseUrl = '/contact';
@@ -18,7 +18,7 @@ export class ContactService {
 
     constructor(private http: HttpClient) { }
 
-    query(filters: ThfDisclaimer[], expandables: string[], page = 1, pageSize = 20): Observable<TotvsResponse<IContact>> {
+    query(filters: PoDisclaimer[], expandables: string[], page = 1, pageSize = 20): Observable<TotvsResponse<IContact>> {
         const url = this.getUrl(this.apiBaseUrl, filters, expandables, page, pageSize);
 
         return this.http.get<TotvsResponse<IContact>>(url, this.headers);
@@ -66,7 +66,7 @@ console.log(this.apiBaseUrl)
         return this.http.delete(`${this.apiBaseUrl}/${id}`, this.headers);
     }
 
-    getUrl(urlBase: string, filters: ThfDisclaimer[], expandables: string[], page: number, pageSize: number): string {
+    getUrl(urlBase: string, filters: PoDisclaimer[], expandables: string[], page: number, pageSize: number): string {
         const urlParams = new Array<String>();
 
         urlParams.push(`pageSize=${pageSize}`);

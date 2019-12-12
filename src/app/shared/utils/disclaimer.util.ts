@@ -3,18 +3,18 @@ Versão: 1.005
 Data Criação: 06/08/2018
 */
 
-import { ThfDisclaimer, ThfI18nPipe, ThfCheckboxGroupOption, ThfMultiselectOption } from '@totvs/thf-ui';
+import { PoDisclaimer, PoI18nPipe, PoCheckboxGroupOption, PoMultiselectOption } from '@portinari/portinari-ui';
 import { IFilterRangeCharacter, IFilterRangeNumber, IFilterRangeDate } from '../interfaces/filter-range.interface';
-import { ThfNotificationService } from '@totvs/thf-ui';
+import { PoNotificationService } from '@portinari/portinari-ui';
 
 export class DisclaimerUtil {
-    thfNotification: ThfNotificationService;
-    thfI18nPipe: ThfI18nPipe;
+    thfNotification: PoNotificationService;
+    thfI18nPipe: PoI18nPipe;
     literals: any = {};
 
     constructor(
-        thfNotification: ThfNotificationService,
-        thfI18nPipe: ThfI18nPipe,
+        thfNotification: PoNotificationService,
+        thfI18nPipe: PoI18nPipe,
         literals: Object
     ) {
         this.thfNotification = thfNotification;
@@ -22,7 +22,7 @@ export class DisclaimerUtil {
         this.literals = literals;
     }
 
-    public makeDisclaimer(property: string, value: string, hideClose = false, tradValue = false, vldBlank = false): ThfDisclaimer {
+    public makeDisclaimer(property: string, value: string, hideClose = false, tradValue = false, vldBlank = false): PoDisclaimer {
         if (value === null || value === undefined) {
             return { label: '', property: '', value: '' };
         }
@@ -39,7 +39,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromNumber(property: string, value: number, hideClose = false, vldBlank = false): ThfDisclaimer {
+    public makeDisclaimerFromNumber(property: string, value: number, hideClose = false, vldBlank = false): PoDisclaimer {
         if (value === null || value === undefined) {
             return { label: '', property: '', value: '' };
         }
@@ -56,7 +56,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromBoolean(property: string, value: boolean, hideClose = false): ThfDisclaimer {
+    public makeDisclaimerFromBoolean(property: string, value: boolean, hideClose = false): PoDisclaimer {
         if (value === null || value === undefined) {
             return { label: '', property: '', value: '' };
         }
@@ -69,7 +69,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromDate(property: string, value: Date, hideClose = false): ThfDisclaimer {
+    public makeDisclaimerFromDate(property: string, value: Date, hideClose = false): PoDisclaimer {
         const dDate: Date = this.ajustDate(value);
 
         if (!this.isValidDate(dDate)) {
@@ -84,7 +84,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromMultiSelect(property: string, value: Array<any>, length = 0, hideClose = false): ThfDisclaimer {
+    public makeDisclaimerFromMultiSelect(property: string, value: Array<any>, length = 0, hideClose = false): PoDisclaimer {
         let lstLabels = '';
         let lstValues = '';
 
@@ -112,7 +112,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromCheckboxGroup(property: string, value: Array<string>, length = 0, hideClose = false): ThfDisclaimer {
+    public makeDisclaimerFromCheckboxGroup(property: string, value: Array<string>, length = 0, hideClose = false): PoDisclaimer {
         let lstLabels = '';
         let lstValues = '';
 
@@ -144,7 +144,7 @@ export class DisclaimerUtil {
     }
 
     public makeDisclaimerFromRangeCharacter(property: string, value: IFilterRangeCharacter, hideClose = false,
-        validateEqual = true): ThfDisclaimer {
+        validateEqual = true): PoDisclaimer {
         if (value.valInitial === null || value.valInitial === undefined) { value.valInitial = value.iniInitial; }
         if (value.valFinal === null || value.valFinal === undefined) { value.valFinal = value.iniFinal; }
 
@@ -165,7 +165,7 @@ export class DisclaimerUtil {
     }
 
     public makeDisclaimerFromRangeNumber(property: string, value: IFilterRangeNumber, hideClose = false,
-        validateEqual = true): ThfDisclaimer {
+        validateEqual = true): PoDisclaimer {
         if (value.valInitial === null || value.valInitial === undefined) { value.valInitial = value.iniInitial; }
         if (value.valFinal === null || value.valFinal === undefined) { value.valFinal = value.iniFinal; }
 
@@ -185,7 +185,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public makeDisclaimerFromRangeDate(property: string, value: IFilterRangeDate, hideClose = false, validateEqual = true): ThfDisclaimer {
+    public makeDisclaimerFromRangeDate(property: string, value: IFilterRangeDate, hideClose = false, validateEqual = true): PoDisclaimer {
         let valInitDate: Date = this.ajustDate(value.valInitial);
         let valFinalDate: Date = this.ajustDate(value.valFinal);
 
@@ -214,7 +214,7 @@ export class DisclaimerUtil {
         };
     }
 
-    public atzCharFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string, defaultValue: string): string {
+    public atzCharFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string, defaultValue: string): string {
         let returnValue = defaultValue;
 
         if (disclaimers && disclaimers.length > 0) {
@@ -231,7 +231,7 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzNumberFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string, defaultValue: number): number {
+    public atzNumberFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string, defaultValue: number): number {
         let returnValue = defaultValue;
 
         if (disclaimers && disclaimers.length > 0) {
@@ -248,7 +248,7 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzBooleanFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string, defaultValue: boolean): boolean {
+    public atzBooleanFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string, defaultValue: boolean): boolean {
         let returnValue = defaultValue;
 
         if (disclaimers && disclaimers.length > 0) {
@@ -265,7 +265,7 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzDateFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string, defaultValue: Date): Date {
+    public atzDateFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string, defaultValue: Date): Date {
         let returnValue: Date = this.ajustDate(defaultValue);
 
         if (disclaimers && disclaimers.length > 0) {
@@ -282,18 +282,18 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzMultiSelectCharFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
-        defaultValue: Array<ThfMultiselectOption>): Array<string> {
+    public atzMultiSelectCharFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
+        defaultValue: Array<PoMultiselectOption>): Array<string> {
         return this.atzMultiSelectFromDisclamer('char', disclaimers, property, defaultValue);
     }
 
-    public atzMultiSelectNumberFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
-        defaultValue: Array<ThfMultiselectOption>): Array<number> {
+    public atzMultiSelectNumberFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
+        defaultValue: Array<PoMultiselectOption>): Array<number> {
         return this.atzMultiSelectFromDisclamer('number', disclaimers, property, defaultValue);
     }
 
-    public atzMultiSelectFromDisclamer(type: string, disclaimers: Array<ThfDisclaimer>, property: string,
-        defaultValue: Array<ThfMultiselectOption>): Array<any> {
+    public atzMultiSelectFromDisclamer(type: string, disclaimers: Array<PoDisclaimer>, property: string,
+        defaultValue: Array<PoMultiselectOption>): Array<any> {
 
         let returnValue = [];
         defaultValue.map(item => {
@@ -319,8 +319,8 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzCheckboxFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
-        options: Array<ThfCheckboxGroupOption>): Array<string> {
+    public atzCheckboxFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
+        options: Array<PoCheckboxGroupOption>): Array<string> {
 
         let returnValue = [];
         options.map(item => {
@@ -345,7 +345,7 @@ export class DisclaimerUtil {
         return returnValue;
     }
 
-    public atzRangeCharFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
+    public atzRangeCharFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
         rangeChar: IFilterRangeCharacter): IFilterRangeCharacter {
         let value = '';
 
@@ -362,7 +362,7 @@ export class DisclaimerUtil {
         return this.atzRangeCharFromQueryParam(value, rangeChar);
     }
 
-    public atzRangeNumFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
+    public atzRangeNumFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
         rangeNum: IFilterRangeNumber): IFilterRangeNumber {
         let value = '';
 
@@ -379,7 +379,7 @@ export class DisclaimerUtil {
         return this.atzRangeNumFromQueryParam(value, rangeNum);
     }
 
-    public atzRangeDateFromDisclamer(disclaimers: Array<ThfDisclaimer>, property: string,
+    public atzRangeDateFromDisclamer(disclaimers: Array<PoDisclaimer>, property: string,
         rangeDate: IFilterRangeDate): IFilterRangeDate {
         let value = '';
 

@@ -4,12 +4,12 @@ Data Criação: 06/08/2018
 */
 
 import { Injectable } from '@angular/core';
-import { ThfBreadcrumb } from '@totvs/thf-ui';
+import { PoBreadcrumb } from '@portinari/portinari-ui';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class BreadcrumbControlService {
-    breadcrumb: ThfBreadcrumb;
+    breadcrumb: PoBreadcrumb;
 
     constructor() { }
 
@@ -52,7 +52,7 @@ export class BreadcrumbControlService {
         this.addBreadcrumbURL(literal, currentRouterURL);
     }
 
-    public getBreadcrumb(): ThfBreadcrumb {
+    public getBreadcrumb(): PoBreadcrumb {
         if (!this.breadcrumb) { this.newBreadcrumb(); }
         return this.breadcrumb;
     }
