@@ -1,0 +1,95 @@
+<thf-page-edit name="customerMaintEdit"
+    [t-title]="getTitle()"
+    [t-breadcrumb]="breadcrumb"
+    >
+    <div class="thf-row ">
+        
+        <thf-number class="thf-md-6" name="code"
+            [(ngModel)]="customer.code"
+            [t-label]="literals?.code"
+            [t-placeholder]="literals?.code"
+            t-maxlength="9"
+            t-minlength="1"
+            t-min="0"
+            t-required
+            [t-readonly]="isEdit">
+        </thf-number>
+
+        <thf-input class="thf-md-3" name="shortName"
+            [(ngModel)]="customer.shortName"
+            [t-label]="literals?.shortName"
+            [t-placeholder]="literals?.shortName"
+            t-maxlength=15
+            t-clean
+            t-required>
+        </thf-input>
+
+        <thf-input class="thf-md-6" name="name"
+            [(ngModel)]="customer.name"
+            [t-label]="literals?.name"
+            [t-placeholder]="literals?.name"
+            t-maxlength=40
+            t-clean>
+        </thf-input>
+        <thf-lookup class="thf-md-6" name="country"
+            [(ngModel)]="customer.country"
+            [t-label]="literals?.country"
+            [t-placeholder]="literals?.country"
+            t-field-label="name"
+            t-field-value="code"
+            [t-columns]="zoomCountryColumns"
+            [t-field-format]="zoomCountryFormat"
+            [t-filter-service]="serviceCountry"
+            t-required>
+        </thf-lookup>
+        <thf-radio-group class="thf-md-6" name="status"
+            [(ngModel)]="customer.status"
+            [t-label]="literals?.status"
+            [t-options]="statusOptions">
+        </thf-radio-group>
+    </div>
+    <div class="thf-row ">
+        <thf-table
+            t-checkbox="false"
+            t-striped="true"
+            [t-columns]="columns"
+            [t-items]="items"
+            [t-actions]="tableActions"
+             [t-show-more-disabled]="!hasNext">
+        </thf-table>
+
+       
+    
+
+    </div>
+</thf-page-edit>
+<thf-modal #modalEdition
+    t-size="sm"
+    [t-title]="literals?.modalEdition"
+    [t-primary-action]="confirm"
+    [t-secondary-action]="close">
+    <thf-input class="thf-md-6" name="code"
+        [(ngModel)]="contact.code"
+        [t-label]="literals?.code"
+        [t-placeholder]="literals?.code"
+        t-maxlength=40
+        t-clean>
+    </thf-input>
+    <thf-input class="thf-md-6" name="name"
+        [(ngModel)]="contact.name"
+        [t-label]="literals?.name"
+        [t-placeholder]="literals?.name"
+        t-maxlength=40
+        t-clean>
+    </thf-input>
+    <thf-input class="thf-md-12" name="fone"
+        [(ngModel)]="contact.fone"
+        [t-label]="literals?.fone"
+        [t-placeholder]="literals?.fone"
+        t-maxlength=40
+        t-clean>
+    </thf-input>
+    
+</thf-modal>
+
+
